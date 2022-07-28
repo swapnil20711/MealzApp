@@ -14,15 +14,17 @@ class MealsCategoriesViewModel(private val repository: MealsRepository = MealsRe
     ViewModel() {
     var mealState: MutableState<List<MealCategory>> =
         mutableStateOf(emptyList<MealCategory>())
+    val isLoadingState: MutableState<Boolean> = mutableStateOf(true)
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
             val meals = getMeals()
+            isLoadingState.value = false
             mealState.value = meals.categories
         }
     }
 
-    suspend fun getMeals(): MealResponse {
+    private suspend fun getMeals(): MealResponse {
         return repository.getMeals()
     }
 }
