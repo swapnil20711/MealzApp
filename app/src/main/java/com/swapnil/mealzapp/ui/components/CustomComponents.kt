@@ -24,7 +24,7 @@ fun CircularLoader(isLoading: Boolean) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            CircularProgressIndicator(color = Color.Green
+            CircularProgressIndicatorcolor = Color.Green)
         }
     }
 }
